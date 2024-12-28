@@ -4,11 +4,10 @@ CREATE DATABASE IF NOT EXISTS alx_book_store;
 -- Use the database
 USE alx_book_store;
 
--- Create authors table
-CREATE TABLE authors (
+-- Create Authors table
+CREATE TABLE Authors (
     author_id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(50) NOT NULL,
-    last_name VARCHAR(50) NOT NULL,
+    author_name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -22,7 +21,7 @@ CREATE TABLE books (
     price DECIMAL(10, 2) NOT NULL,
     stock INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (author_id) REFERENCES authors(author_id)
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
 -- Create customers table
