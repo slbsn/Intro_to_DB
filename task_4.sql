@@ -1,7 +1,7 @@
 -- task_4.sql: Script to show full description of Books table
 
--- Select the database
-USE alx_book_store;
-
--- Show the full create table statement for Books table
-SHOW CREATE TABLE Books;
+SELECT COLUMN_NAME, COLUMN_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_SCHEMA = 'alx_book_store'
+AND TABLE_NAME = 'Books'
+ORDER BY ORDINAL_POSITION;
