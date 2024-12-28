@@ -1,4 +1,4 @@
-import pymysql
+import mysql.connector
 from pymysql import Error
 import os
 
