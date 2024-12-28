@@ -33,11 +33,11 @@ CREATE TABLE Customers (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create orders table
-CREATE TABLE orders (
+-- Create Orders table
+CREATE TABLE Orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     customer_id INT,
-    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    order_date DATE,
     total_amount DECIMAL(10, 2),
     status VARCHAR(20) DEFAULT 'pending',
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
@@ -50,6 +50,6 @@ CREATE TABLE order_details (
     book_id INT,
     quantity INT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
