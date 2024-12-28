@@ -1,5 +1,5 @@
 import mysql.connector
-from pymysql import Error
+from mysql.connector import Error  # Correcting the import for mysql.connector
 import os
 
 def create_database():
@@ -14,7 +14,7 @@ def create_database():
             raise ValueError("Database password not set in environment variables")
 
         # Establish connection to MySQL server
-        connection = pymysql.connect(
+        connection = mysql.connector.connect(
             host=db_host,
             user=db_user,
             password=db_password
