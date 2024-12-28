@@ -1,5 +1,5 @@
 import mysql.connector
-from mysql.connector import Error  # Correcting the import for mysql.connector
+from mysql.connector import Error  # Ensure we're using Error from mysql.connector
 import os
 
 def create_database():
@@ -28,12 +28,12 @@ def create_database():
         
         print("Database 'alx_book_store' created successfully!")
 
-    except Error as e:
-        print(f"Error connecting to MySQL server: {e}")
-    except ValueError as e:
+    except mysql.connector.Error as e:  # Handle MySQL-specific errors
+        print(f"MySQL error: {e}")
+    except ValueError as e:  # Handle configuration errors
         print(f"Configuration error: {e}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    except Exception as e:  # Handle other general exceptions
+        print(f"An unexpected error occurred: {e}")
     finally:
         if connection:
             try:
@@ -41,7 +41,7 @@ def create_database():
                 cursor.close()
                 connection.close()
                 print("MySQL connection is closed")
-            except Error as e:
+            except mysql.connector.Error as e:
                 print(f"Error closing MySQL connection: {e}")
 
 if __name__ == "__main__":
